@@ -1,4 +1,4 @@
-# HTTP Kafka adapter
+# Kafcar
 
 Sometimes we want to isolate our services from Kafka
 and allow a single point of implementation for all Kafka related
