@@ -9,4 +9,3 @@ class HttpKafkaApplication
 fun main(args: Array<String>) {
 	runApplication<HttpKafkaApplication>(*args)
 }
-
