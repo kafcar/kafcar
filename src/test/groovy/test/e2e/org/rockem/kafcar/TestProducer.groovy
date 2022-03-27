@@ -6,7 +6,7 @@ import test.e2e.org.rockem.kafcar.support.App
 import test.e2e.org.rockem.kafcar.support.KafkaMonitor
 import test.e2e.org.rockem.kafcar.support.Message
 
-class ProducerSpec extends Specification {
+class ProduceSpec extends Specification {
 
     @Shared final App app = new App()
     @Shared final KafkaMonitor kafka = new KafkaMonitor()

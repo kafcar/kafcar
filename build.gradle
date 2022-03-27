@@ -19,9 +19,11 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.22'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
+	testImplementation("org.springframework.boot:spring-boot-devtools")
 	testImplementation "org.springframework.boot:spring-boot-starter-test"
 	testImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
 	testImplementation "org.spockframework:spock-core:2.1-groovy-3.0"
+	testImplementation "org.awaitility:awaitility:4.2.0"
 }
 
 test {
