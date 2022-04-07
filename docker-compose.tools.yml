@@ -5,9 +5,7 @@ services:
     ports:
       - "2181:2181"
   kafka:
-    build:
-      context: kafka
-      dockerfile: Dockerfile
+    image: wurstmeister/kafka
     links:
       - zookeeper:zk
     ports:
@@ -16,7 +14,7 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zk:2181
       KAFKA_MESSAGE_MAX_BYTES: 2000000
-      KAFKA_CREATE_TOPICS: "kafcar.output.topic:kafcar.input.topic"
+      KAFKA_CREATE_TOPICS: "e2e.output.topic:1:1,e2e.input.topic:1:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:

@@ -12,6 +12,7 @@ class ProduceSpec extends Specification {
     @Shared final KafkaMonitor kafka = new KafkaMonitor()
 
     def setupSpec() {
+        kafka.start()
         app.start()
     }
 
@@ -28,6 +29,6 @@ class ProduceSpec extends Specification {
     }
 
     def teardownSpec() {
-        // kafka.stop()
+        kafka.stop()
     }
 }
