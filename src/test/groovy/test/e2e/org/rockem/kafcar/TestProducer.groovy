@@ -13,7 +13,7 @@ class ProduceSpec extends Specification {
 
     def setupSpec() {
         kafka.start()
-        app.start()
+        app.startIfNeeded()
     }
 
     def "produce a message"() {

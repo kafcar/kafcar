@@ -10,7 +10,7 @@ class App {
     private final String appUrl = System.getenv('APP_URL')
     private boolean started = false
 
-    def start() {
+    def startIfNeeded() {
         if(!started) {
             KafcarApplication.main()
             waitForAppToBeHealthy()
