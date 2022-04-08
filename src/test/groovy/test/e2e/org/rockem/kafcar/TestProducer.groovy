@@ -1,10 +1,13 @@
 package test.e2e.org.rockem.kafcar
 
+
 import spock.lang.Shared
 import spock.lang.Specification
 import test.e2e.org.rockem.kafcar.support.App
 import test.e2e.org.rockem.kafcar.support.KafkaMonitor
 import test.e2e.org.rockem.kafcar.support.Message
+
+import static org.awaitility.Awaitility.await
 
 class ProduceSpec extends Specification {
 
@@ -20,12 +23,11 @@ class ProduceSpec extends Specification {
         given:
         def message = new Message(
             topic: "kafcar.output.topic",
-            key: "kuku",
             value: "message content")
         when:
         app.produceMessage(message)
         then:
-        kafka.hasReceived(message)
+        await().until { kafka.hasReceived(message) }
     }
 
     def teardownSpec() {

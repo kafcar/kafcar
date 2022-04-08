@@ -26,6 +26,9 @@ dependencies {
 	testImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
 	testImplementation "org.spockframework:spock-core:2.1-groovy-3.0"
 	testImplementation "org.awaitility:awaitility:4.2.0"
+	// testImplementation "org.apache.httpcomponents:httpclient:4.5.13"
+	testImplementation "org.apache.httpcomponents:fluent-hc:4.5.13"
+
 }
 
 test {
