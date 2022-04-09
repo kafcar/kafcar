@@ -22,7 +22,7 @@ class ProduceSpec extends Specification {
     def "produce a message"() {
         given:
         def message = new Message(
-            topic: "kafcar.output.topic",
+            topic: "e2e.output.topic",
             value: "message content")
         when:
         app.produceMessage(message)

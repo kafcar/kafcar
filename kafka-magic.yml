@@ -1,0 +1,9 @@
+version: '2'
+services:
+  magic:
+    image: digitsy/kafka-magic
+    ports:
+      - "8888:80"
+    environment:
+      KMAGIC_ALLOW_TOPIC_DELETE: "true"
+      KMAGIC_ALLOW_SCHEMA_DELETE: "true"

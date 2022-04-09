@@ -3,10 +3,12 @@ package test.e2e.org.rockem.kafcar.support
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 import org.apache.http.client.fluent.Request
+import org.apache.http.entity.ContentType
 import org.apache.http.entity.StringEntity
 import org.rockem.kafcar.KafcarApplication
 
 import static java.util.concurrent.TimeUnit.SECONDS
+import static org.apache.http.entity.ContentType.APPLICATION_JSON
 import static org.awaitility.Awaitility.await
 
 class App {
@@ -23,7 +25,7 @@ class App {
     }
 
     def waitForAppToBeHealthy() {
-        await().atMost(30, SECONDS).ignoreExceptions().until { getHealthStatus() == 'UP' }
+        await().atMost(20, SECONDS).ignoreExceptions().until { getHealthStatus() == 'UP' }
     }
 
     String getHealthStatus() {
@@ -32,10 +34,9 @@ class App {
     }
 
     def produceMessage(Message message) {
-        def response = Request.Post("$appUrl/api/v1/produce")
-                .body(new StringEntity(new JsonBuilder(message).toString()))
+        def produceResponse = Request.Post("$appUrl/api/v1/produce")
+                .body(new StringEntity(new JsonBuilder(message).toString(), APPLICATION_JSON))
                 .execute().returnResponse()
-        assert response.statusLine.statusCode == 200
-
+        assert produceResponse.statusLine.statusCode == 200
     }
 }

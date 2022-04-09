@@ -1,0 +1,9 @@
+kafka:
+  bootstrap-servers: localhost:9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+      base-path: /mgmt
