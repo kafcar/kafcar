@@ -1,15 +1,21 @@
 import produceMessage from './support/app';
-import { kafkaHasReceived, startMonitoringKafka, stopMonitoringKafka } from './support/kafka';
+import {
+  kafkaHasReceived, OutputTopic, startMonitoringKafka, stopMonitoringKafka,
+} from './support/kafka';
 import { Message } from './support/message';
 
 describe('Message producer', () => {
   before(async () => startMonitoringKafka());
-  after(async () => stopMonitoringKafka());
+  after(function (done) {
+    this.timeout(8000);
+    stopMonitoringKafka().then(() => {
+      done();
+    });
+  });
 
   it('should produce a simple message', async () => {
     const message: Message = {
-      topic: 'kafcar.output.e2e',
-      key: 'kuku',
+      topic: OutputTopic,
       value: 'message content',
     };
     await produceMessage(message);

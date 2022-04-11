@@ -1,4 +1,6 @@
 import { Kafka, KafkaMessage } from 'kafkajs';
+import { busywait } from 'busywait';
+import { isDeepStrictEqual } from 'util';
 import { Message } from './message';
 
 const kafka = new Kafka({
@@ -6,22 +8,21 @@ const kafka = new Kafka({
   brokers: ['localhost:9092'],
 });
 
-const producedMessages = [];
+export const OutputTopic = 'e2e.output.topic';
+
+const producedMessages: Message[] = [];
 const consumer = kafka.consumer({ groupId: 'e2e-tests' });
 
 function save(message: KafkaMessage) {
   producedMessages.push({
-    key: message.key!.toString(),
+    topic: OutputTopic,
     value: message.value!.toString(),
   });
 }
 
 export const startMonitoringKafka = async () => {
-  console.log('1')
   await consumer.connect();
-  console.log('2')
-  await consumer.subscribe({ topic: 'e2e.output.topic' });
-  console.log('3')
+  await consumer.subscribe({ topic: OutputTopic });
   await consumer.run({
     eachMessage: async ({ message }) => {
       save(message);
@@ -30,6 +31,14 @@ export const startMonitoringKafka = async () => {
 };
 
 export const kafkaHasReceived = async (message: Message) => {
+  await busywait(() => {
+    if (!producedMessages.find((e) => isDeepStrictEqual(e, message))) {
+      throw new Error('Message wasn\'t produced yet');
+    }
+  }, {
+    sleepTime: 100,
+    maxChecks: 10,
+  });
 };
 
 export const stopMonitoringKafka = async () => {

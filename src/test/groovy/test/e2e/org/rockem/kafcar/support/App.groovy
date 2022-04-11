@@ -3,7 +3,6 @@ package test.e2e.org.rockem.kafcar.support
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 import org.apache.http.client.fluent.Request
-import org.apache.http.entity.ContentType
 import org.apache.http.entity.StringEntity
 import org.rockem.kafcar.KafcarApplication
 
@@ -25,7 +24,7 @@ class App {
     }
 
     def waitForAppToBeHealthy() {
-        await().atMost(20, SECONDS).ignoreExceptions().until { getHealthStatus() == 'UP' }
+        await().ignoreExceptions().until { getHealthStatus() == 'UP' }
     }
 
     String getHealthStatus() {

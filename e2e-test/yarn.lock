@@ -383,6 +383,11 @@ browser-stdout@1.3.1:
   resolved "https://registry.npmjs.org/browser-stdout/-/browser-stdout-1.3.1.tgz"
   integrity sha512-qhAVI1+Av2X7qelOfAIYwXONood6XlZE/fXaBSmW/T5SzLAmCgzi+eiWE7fUvbHaeNBQH13UftjpXxsfLkMpgw==
 
+busywait@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/busywait/-/busywait-3.1.1.tgz#457a0a7c408d41cf064204a181151d9228913a45"
+  integrity sha512-LAd6ewawoVxLST2TtetmBV8dtlcidwVgLxHyarr4KJbUezpRhbT6rRKM2k4bif6x+p5XjWOD0ywkGeI/ntZD7Q==
+
 call-bind@^1.0.0, call-bind@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
