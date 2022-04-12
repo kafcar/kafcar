@@ -1,6 +1,5 @@
 package org.rockem.kafcar.produce;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.*;
 
 import java.util.Map;
