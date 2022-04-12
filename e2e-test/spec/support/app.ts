@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { Message } from './message';
 
+const appUrl = process.env.APP_URL || 'http://localhost:8080';
+
 const appClient = axios.create({
-  baseURL: `${process.env.APP_URL || 'http://localhost:8080'}/api/v1`,
+  baseURL: `${appUrl}/api/v1`,
 });
 
 const produceMessage = async (message: Message) => {
