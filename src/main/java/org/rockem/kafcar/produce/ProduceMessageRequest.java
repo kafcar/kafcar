@@ -1,6 +1,9 @@
 package org.rockem.kafcar.produce;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.*;
+
+import java.util.Map;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,5 +13,5 @@ import lombok.*;
 public class ProduceMessageRequest {
 
     private String topic;
-    private String value;
+    private Map<String, Object> value;
 }

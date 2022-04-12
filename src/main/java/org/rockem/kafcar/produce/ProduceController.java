@@ -1,5 +1,8 @@
 package org.rockem.kafcar.produce;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
@@ -12,15 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProduceController {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public ProduceController(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     @PostMapping("/api/v1/produce")
-    public void produceMessage(@RequestBody ProduceMessageRequest request) {
+    public void produceMessage(@RequestBody ProduceMessageRequest request) throws JsonProcessingException {
         ListenableFuture<SendResult<String, String>> future =
-                kafkaTemplate.send(request.getTopic(), request.getValue());
+                kafkaTemplate.send(request.getTopic(), objectMapper.writeValueAsString(request.getValue()));
 
         future.addCallback(new ListenableFutureCallback<>() {
 

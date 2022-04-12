@@ -13,10 +13,10 @@ export const OutputTopic = 'e2e.output.topic';
 const producedMessages: Message[] = [];
 const consumer = kafka.consumer({ groupId: 'e2e-tests' });
 
-function save(message: KafkaMessage) {
+function save(message: any) {
   producedMessages.push({
     topic: OutputTopic,
-    value: message.value!.toString(),
+    value: JSON.parse(message.value),
   });
 }
 

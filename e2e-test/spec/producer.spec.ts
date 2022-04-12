@@ -5,7 +5,7 @@ import {
 } from './support/kafka';
 import { Message } from './support/message';
 
-describe('Message producer', () => {
+describe('Message producer', function () {
   before(async function () {
     await startMonitoringKafka();
   });
@@ -13,7 +13,10 @@ describe('Message producer', () => {
   it('should produce a simple message', async function () {
     const message: Message = {
       topic: OutputTopic,
-      value: 'message content',
+      value: {
+        time: Date.now(),
+        message: 'hello',
+      },
     };
     await produceMessage(message);
     await kafkaHasReceived(message);
@@ -21,8 +24,6 @@ describe('Message producer', () => {
 
   after(function (done) {
     this.timeout(8000);
-    stopMonitoringKafka().then(() => {
-      done();
-    });
+    stopMonitoringKafka().then(() => done());
   });
 });

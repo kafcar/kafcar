@@ -1,4 +1,4 @@
 export interface Message {
   topic: String,
-  value: String
+  value: object
 }
