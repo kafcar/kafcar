@@ -8,7 +8,11 @@ const appClient = axios.create({
 });
 
 const produceMessage = async (message: Message) => {
-  await appClient.post('/produce', message);
+  try {
+    await appClient.post('/produce', message);
+  } catch (e: any) {
+    throw new Error(`Failed to produce a message with error: ${e.message}`);
+  }
 };
 
 export default produceMessage;

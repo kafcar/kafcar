@@ -1,4 +1,4 @@
-import { Kafka, KafkaMessage } from 'kafkajs';
+import { Kafka } from 'kafkajs';
 import { busywait } from 'busywait';
 import { isDeepStrictEqual } from 'util';
 import { Message } from './message';
