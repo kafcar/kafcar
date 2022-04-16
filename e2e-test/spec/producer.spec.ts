@@ -8,9 +8,13 @@ import { Message } from './support/message';
 const Second = 1000;
 
 describe('Message producer', function () {
-  before(async function () {
+  before(async function waitForApp() {
     this.timeout(4 * Second);
     await waitForAppToBeReady();
+  });
+
+  before(async function connectingKafka() {
+    this.timeout(4 * Second);
     await startMonitoringKafka();
   });
 
@@ -29,6 +33,5 @@ describe('Message producer', function () {
   after(function (done) {
     this.timeout(8 * Second);
     stopMonitoringKafka().then(() => done());
-    console.log('1');
   });
 });
