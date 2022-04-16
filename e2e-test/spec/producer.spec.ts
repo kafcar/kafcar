@@ -5,10 +5,13 @@ import {
 } from './support/kafka';
 import { Message } from './support/message';
 
+const Second = 1000;
+
 describe('Message producer', function () {
   before(async function () {
-    await startMonitoringKafka();
+    this.timeout(4 * Second);
     await waitForAppToBeReady();
+    await startMonitoringKafka();
   });
 
   it('should produce a simple message', async function () {
@@ -24,7 +27,8 @@ describe('Message producer', function () {
   });
 
   after(function (done) {
-    this.timeout(8000);
+    this.timeout(8 * Second);
     stopMonitoringKafka().then(() => done());
+    console.log('1');
   });
 });
