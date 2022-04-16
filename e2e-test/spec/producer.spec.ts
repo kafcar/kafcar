@@ -9,12 +9,11 @@ const Second = 1000;
 
 describe('Message producer', function () {
   before(async function waitForApp() {
-    this.timeout(4 * Second);
+    this.timeout(8 * Second);
     await waitForAppToBeReady();
   });
 
   before(async function connectingKafka() {
-    this.timeout(4 * Second);
     await startMonitoringKafka();
   });
 
