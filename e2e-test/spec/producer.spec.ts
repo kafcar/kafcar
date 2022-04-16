@@ -9,7 +9,6 @@ const Second = 1000;
 
 describe('Message producer', function () {
   before(async function waitForApp() {
-    this.timeout(20 * Second);
     await waitForAppToBeReady();
   });
 

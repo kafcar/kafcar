@@ -26,7 +26,7 @@ jobs:
 
       - name: Run tests
         working-directory: e2e-test
-        run: yarn install && yarn test
+        run: yarn install && yarn ci-test
 
       - name: Stopping Kafka
         run: docker-compose -f docker-compose.tools.yml down
