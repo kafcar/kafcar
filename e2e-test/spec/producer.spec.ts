@@ -8,6 +8,7 @@ import { Message } from './support/message';
 const Second = 1000;
 
 describe('Message producer', function () {
+  this.timeout(0);
   before(async function waitForApp() {
     await waitForAppToBeReady();
   });

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "ci-test": "mocha -r ts-node/register 'spec/**/*.ts' --timeout 20000",
+    "ci-test": "mocha -r ts-node/register 'spec/**/*.ts'",
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
