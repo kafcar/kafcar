@@ -16,7 +16,7 @@ export const waitForAppToBeReady = async () => {
     }
   }, {
     sleepTime: 100,
-    maxChecks: 40,
+    maxChecks: 80,
   });
 };
 
