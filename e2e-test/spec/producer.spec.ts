@@ -5,8 +5,6 @@ import {
 } from './support/kafka';
 import { Message } from './support/message';
 
-const Second = 1000;
-
 describe('Message producer', function () {
   this.timeout(0);
   before(async function waitForApp() {
@@ -30,7 +28,6 @@ describe('Message producer', function () {
   });
 
   after(function (done) {
-    this.timeout(8 * Second);
     stopMonitoringKafka().then(() => done());
   });
 });
