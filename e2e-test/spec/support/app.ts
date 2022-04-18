@@ -10,6 +10,7 @@ const appClient = axios.create({
 
 export const waitForAppToBeReady = async () => {
   await busywait(async () => {
+    console.log('.');
     const response = await axios.get(`${appUrl}/mgmt/health`);
     if (response.data.status !== 'UP') {
       throw new Error('App isn\'t ready yet');

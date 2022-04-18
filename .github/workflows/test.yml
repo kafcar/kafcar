@@ -22,7 +22,9 @@ jobs:
         run: docker-compose -f docker-compose.tools.yml up -d
 
       - name: Start kafcar
-        run: ./gradlew build && ./gradlew bootRun &
+        run: | 
+          ./gradlew build
+          ./gradlew bootRun &
 
       - name: Run tests
         working-directory: e2e-test
