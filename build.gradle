@@ -1,0 +1,39 @@
+plugins {
+	id "org.springframework.boot" version "2.6.4"
+	id "io.spring.dependency-management" version "1.0.11.RELEASE"
+	id "com.diffplug.spotless" version "6.4.1"
+	id "java"
+	id 'pmd'
+}
+
+group = "org.rockem"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter"
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.springframework.boot:spring-boot-starter-actuator"
+	implementation "org.springframework.kafka:spring-kafka"
+
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+	developmentOnly "org.springframework.boot:spring-boot-devtools"
+
+	testImplementation "org.springframework.boot:spring-boot-starter-test"
+	// testImplementation 'org.codehaus.groovy:groovy-all:3.0.10'
+	// testImplementation "org.spockframework:spock-core:2.1-groovy-3.0"
+	// testImplementation "org.awaitility:awaitility:4.2.0"
+	// testImplementation "org.apache.httpcomponents:httpclient:4.5.13"
+	// testImplementation "org.apache.httpcomponents:fluent-hc:4.5.13"
+
+}
+
+test {
+	useJUnitPlatform()
+}
