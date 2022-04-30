@@ -1,0 +1,7 @@
+services:
+  zookeeper:
+    image: kafcar-app
+    ports:
+      - 8080:8080
+    networks:
+      - kafcar_net
